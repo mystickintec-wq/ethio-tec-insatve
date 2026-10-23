@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Authenticated user profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "email", "createdAt"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "Membership application submitted by a student",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fullName": { "type": "string", "maxLength": 120 },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string", "maxLength": 30 },
+        "institution": { "type": "string", "maxLength": 150 },
+        "fieldOfStudy": { "type": "string", "maxLength": 100 },
+        "graduationYear": { "type": "string", "maxLength": 10 },
+        "track": { "type": "string", "enum": ["AI & Machine Learning", "Full-Stack & Cloud Systems", "Robotics, IoT & Embedded", "Cybersecurity & Networks"] },
+        "experienceLevel": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "githubUrl": { "type": "string", "maxLength": 200 },
+        "statement": { "type": "string", "maxLength": 3000 },
+        "status": { "type": "string", "enum": ["Pending Review", "Shortlisted", "Accepted", "Archived"] },
+        "submittedAt": { "type": "string" }
+      },
+      "required": ["fullName", "email", "institution", "track", "statement", "status", "submittedAt"]
+    },
+    "CommunityIntroduction": {
+      "title": "CommunityIntroduction",
+      "description": "Member introduction shared to the EthioTech Community Hub",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "skills": { "type": "string", "maxLength": 300 },
+        "interests": { "type": "string", "maxLength": 300 },
+        "contribution": { "type": "string", "maxLength": 1000 },
+        "learningGoals": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "skills", "interests", "contribution", "learningGoals", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile documents"
+    },
+    "/registrations/{registrationId}": {
+      "schema": { "$ref": "#/entities/Registration" },
+      "description": "Student membership registrations"
+    },
+    "/introductions/{introId}": {
+      "schema": { "$ref": "#/entities/CommunityIntroduction" },
+      "description": "Public community introductions"
+    }
+  }
+}

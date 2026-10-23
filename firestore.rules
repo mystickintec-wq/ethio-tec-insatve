@@ -1,0 +1,81 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId)
+        && incoming().keys().hasAll(['id', 'email', 'createdAt'])
+        && incoming().id == userId
+        && incoming().email is string
+        && incoming().email.size() <= 150;
+      allow update: if isOwner(userId)
+        && incoming().id == userId;
+      allow delete: if false;
+    }
+
+    // Registrations Collection
+    match /registrations/{registrationId} {
+      allow get: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.email == request.auth.token.email);
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.email == request.auth.token.email);
+      allow create: if isSignedIn()
+        && isValidId(registrationId)
+        && incoming().keys().hasAll(['fullName', 'email', 'institution', 'track', 'statement', 'status', 'submittedAt'])
+        && incoming().fullName is string && incoming().fullName.size() <= 120
+        && incoming().email is string && incoming().email.size() <= 150
+        && incoming().institution is string && incoming().institution.size() <= 150
+        && incoming().statement is string && incoming().statement.size() <= 3000
+        && incoming().status in ['Pending Review', 'Shortlisted', 'Accepted', 'Archived'];
+      allow update: if isSignedIn() && resource.data.userId == request.auth.uid
+        && incoming().diff(existing()).affectedKeys().hasOnly(['phone', 'githubUrl', 'statement']);
+      allow delete: if false;
+    }
+
+    // Community Introductions Collection
+    match /introductions/{introId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && isValidId(introId)
+        && incoming().keys().hasAll(['name', 'skills', 'interests', 'contribution', 'learningGoals', 'createdAt'])
+        && incoming().name is string && incoming().name.size() <= 100
+        && incoming().skills is string && incoming().skills.size() <= 300
+        && incoming().interests is string && incoming().interests.size() <= 300
+        && incoming().contribution is string && incoming().contribution.size() <= 1000
+        && incoming().learningGoals is string && incoming().learningGoals.size() <= 1000;
+      allow update: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // Health check test doc
+    match /test/{docId} {
+      allow read: if true;
+    }
+  }
+}

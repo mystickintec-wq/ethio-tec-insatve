@@ -1,0 +1,351 @@
+{
+  "projects": [
+    {
+      "id": "guzo-ai",
+      "title": "Guzo AI — Urban Transit & Mobility Engine",
+      "tagline": "Multimodal AI route optimization and crowd-telemetry for Addis Ababa transit networks.",
+      "description": "Guzo AI is an intelligent routing and public transit platform specifically architected for the unique mobility dynamics of Addis Ababa. It combines real-time bus telemetry, minibus taxi route indexing, and Light Rail Transit (LRT) scheduling into a unified low-bandwidth offline-first mobile and web application. Incorporates graph neural networks to predict congestion bottlenecks along major arteries such as Bole Road, Mexico Square, and Megenagna interchange.",
+      "category": "AI & Machine Learning",
+      "status": "Active Development",
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "FastAPI",
+        "React",
+        "OpenStreetMap",
+        "WebSockets"
+      ],
+      "githubUrl": "https://github.com/ethiotech-initiative/guzo-ai",
+      "demoUrl": "https://guzo-ai-preview.ethiotech.org",
+      "lead": "Eskinder Tilahun (AI/ML Lead, AAU)",
+      "featured": true,
+      "createdAt": "2026-02-10T08:00:00Z"
+    },
+    {
+      "id": "agritech-vision",
+      "title": "AgriTech Vision — Edge Disease Diagnostic System",
+      "tagline": "Offline-capable computer vision models identifying crop pathology for Ethiopian smallholders.",
+      "description": "An edge-deployed computer vision model trained on over 45,000 field images of Ethiopian staple crops, with specific high-accuracy detection for teff leaf rust, coffee berry disease, and maize streak virus. Operates on quantized ONNX runtimes on budget Android devices and solar-powered edge cameras without requiring an active cellular connection.",
+      "category": "AgriTech & Robotics",
+      "status": "Pilot Research",
+      "technologies": [
+        "TensorFlow Lite",
+        "YOLOv11-Nano",
+        "Flutter",
+        "Python",
+        "ONNX Runtime"
+      ],
+      "githubUrl": "https://github.com/ethiotech-initiative/agritech-vision",
+      "lead": "Bethlehem Haile (Robotics & Vision Fellow, ASTU)",
+      "featured": true,
+      "createdAt": "2026-01-18T10:30:00Z"
+    },
+    {
+      "id": "amharic-nlp-core",
+      "title": "EthioLinguistic NLP Core",
+      "tagline": "High-performance tokenizers and semantic embedding spaces for Amharic and Afaan Oromo.",
+      "description": "A dedicated low-resource natural language initiative developing domain-specific foundational tokenizers, morphological stemmers, and multilingual semantic search models for Ethiopian legal documents, technical literature, and healthcare advisory systems.",
+      "category": "AI & Machine Learning",
+      "status": "Active Development",
+      "technologies": [
+        "Hugging Face Transformers",
+        "PyTorch",
+        "Rust Tokenizers",
+        "FastAPI"
+      ],
+      "githubUrl": "https://github.com/ethiotech-initiative/ethio-nlp-core",
+      "lead": "Yared Mengistu (NLP Lead, AASTU)",
+      "featured": true,
+      "createdAt": "2026-03-05T14:15:00Z"
+    },
+    {
+      "id": "ethio-telematics-grid",
+      "title": "EthioTelematics LoRa Mesh",
+      "tagline": "Long-range decentralized sensor networks monitoring microclimate and agricultural zones.",
+      "description": "Custom hardware PCB designs and firmware for low-power LoRa mesh nodes deployed across agricultural test fields in Bishoftu and university campuses. Provides real-time soil moisture, temperature, and ambient humidity telemetry over multi-kilometer ranges using solar scavenging.",
+      "category": "IoT & Telematics",
+      "status": "Deployed",
+      "technologies": [
+        "ESP32",
+        "LoRaWAN",
+        "FreeRTOS",
+        "C++",
+        "Grafana",
+        "MQTT"
+      ],
+      "githubUrl": "https://github.com/ethiotech-initiative/telematics-mesh",
+      "lead": "Dawit Bekele (Hardware & Embedded Systems)",
+      "featured": false,
+      "createdAt": "2025-11-20T09:00:00Z"
+    },
+    {
+      "id": "chapa-telebirr-sdk",
+      "title": "Unified Ethiopian FinTech SDK",
+      "tagline": "Type-safe multi-gateway developer kit integrating Telebirr, CBE Birr, and Chapa APIs.",
+      "description": "An open-source developer toolsuite reducing Ethiopian payment gateway integration times from weeks to hours. Provides full idempotency checks, automated webhook verification, and mock sandbox testing environments for software teams.",
+      "category": "FinTech & DevTools",
+      "status": "Deployed",
+      "technologies": [
+        "TypeScript",
+        "Node.js",
+        "Go",
+        "Docker",
+        "Jest"
+      ],
+      "githubUrl": "https://github.com/ethiotech-initiative/ethio-fintech-sdk",
+      "lead": "Nahom Alemayehu (Cloud Infrastructure Lead)",
+      "featured": false,
+      "createdAt": "2026-02-28T16:45:00Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "low-resource-nlp-frontier",
+      "title": "Decoding Large Language Models for Low-Resource Languages: The Ethiopian Linguistic Frontier",
+      "slug": "low-resource-nlp-frontier",
+      "category": "AI & ML",
+      "summary": "An architectural exploration of Geʽez script tokenization bottlenecks, sub-word boundary fragmentation, and cross-lingual transfer learning for Amharic and Afaan Oromo.",
+      "content": "## The Tokenization Bottleneck in Ethiopic Scripts\n\nNatural language processing models have achieved staggering general capabilities, yet their performance on Ethiopian languages often suffers from severe **token inflation**. Because standard byte-pair encoding (BPE) vocabularies are heavily biased toward Latin-script corpora, an Amharic or Tigrinya sentence routinely fragments into 3x to 5x more sub-word tokens than its English equivalent.\n\n### Architectural Implications\n1. **Context Window Shrinkage:** A 4,096-token context window that comfortably holds 3,000 English words can only process ~800 Amharic words before truncation.\n2. **Computational Cost Multiplier:** Training and inference latency scales quadratically with sequence length in standard attention mechanisms.\n3. **Loss of Semantic Integrity:** Splitting complex Fidel syllables across arbitrary byte boundaries damages morphological coherence.\n\n### The EthioTech Linguistic Strategy\nThe EthioTech Initiative NLP team implemented a specialized **Geʽez-Aware Vocabulary Extension (GAVE)**. By training morphological tokenizers tailored to Fidel phonetics and root-and-pattern Semitic morphology, our team reduced the average tokens-per-word ratio from 4.12 down to 1.34 on the standard Ethiopian legal corpus.\n\nWe are actively open-sourcing our benchmark datasets and tokenizer weights through the **ETHIOTECH INTEL** repository.",
+      "author": {
+        "name": "Yared Mengistu",
+        "role": "Research Lead, EthioNLP Division",
+        "institution": "AASTU & The EthioTech Initiative"
+      },
+      "readTimeMinutes": 6,
+      "publishedAt": "2026-03-12T09:00:00Z",
+      "tags": [
+        "Natural Language Processing",
+        "Amharic",
+        "Tokenization",
+        "Machine Learning"
+      ],
+      "featured": true
+    },
+    {
+      "id": "resilient-microservices-infrastructure",
+      "title": "Building Resilient Distributed Systems Under Bandwidth Constrained Networks",
+      "slug": "resilient-microservices-infrastructure",
+      "category": "Engineering",
+      "summary": "Engineering patterns for intermittent connectivity: local-first state, delta synchronization, and offline-resilient RPC layers for Ethiopian software engineering.",
+      "content": "## Designing for Real-World African Network Topology\n\nBuilding software systems that assume 99.999% persistent fiber connectivity is a guaranteed recipe for user frustration in developing markets. Between fiber cuts, electrical outages, and fluctuating cellular throughput, engineering teams must adopt **Local-First Resilient Architecture**.\n\n### Fundamental Principles\n- **State on the Device First:** Every critical mutation is persisted to SQLite or IndexedDB before network dispatch.\n- **Conflict-Free Replicated Data Types (CRDTs):** Merging offline concurrent edits without server lock-ins.\n- **Binary Delta Payloads:** Replacing bloated JSON envelopes with Protocol Buffers or MessagePack to cut mobile data expenses for users by over 70%.\n\n### Case Study: Guzo AI Sync Engine\nIn Guzo AI, transit tracking nodes transmit compressed 16-byte telemetry pulses via UDP/CoAP rather than heavy HTTP handshakes. When passing through network dead zones, nodes queue updates and execute monotonic vector-clock merges once back in cell range.",
+      "author": {
+        "name": "Nahom Alemayehu",
+        "role": "Systems Architecture Lead",
+        "institution": "The EthioTech Initiative"
+      },
+      "readTimeMinutes": 5,
+      "publishedAt": "2026-03-01T11:30:00Z",
+      "tags": [
+        "Distributed Systems",
+        "Offline-First",
+        "Performance",
+        "Network Engineering"
+      ],
+      "featured": true
+    },
+    {
+      "id": "autonomous-robotics-in-agriculture",
+      "title": "Autonomous Robotics in Precision Agriculture: Field Testing in the Ethiopian Rift Valley",
+      "slug": "autonomous-robotics-in-agriculture",
+      "category": "Robotics",
+      "summary": "Deploying edge computer vision and low-cost solar robotics for targeted weeding and crop pathology diagnostics across Ethiopian agricultural cooperatives.",
+      "content": "## From University Lab to Rift Valley Farmland\n\nWhile advanced agricultural automation often costs tens of thousands of dollars per unit, our Robotics & IoT Department set out to prove that functional agricultural robotics can be manufactured from locally accessible components, 3D printed housings, and low-cost microcontrollers.\n\n### Field Deployment Results\nDuring our 3-week pilot near Bishoftu, our autonomous crawler prototype achieved:\n- **91.4% Accuracy** in real-time distinguishing between weed varieties and early-stage teff sprouts.\n- **6.5 Hours** continuous field endurance powered by dual monocrystalline solar panels and LiFePO4 cells.\n- Zero reliance on cloud connectivity for real-time motor actuation and nozzle targeting.",
+      "author": {
+        "name": "Bethlehem Haile",
+        "role": "Lead Robotics Engineer",
+        "institution": "ASTU & EthioTech Initiative"
+      },
+      "readTimeMinutes": 7,
+      "publishedAt": "2026-02-18T14:00:00Z",
+      "tags": [
+        "Robotics",
+        "AgriTech",
+        "Computer Vision",
+        "Embedded Systems"
+      ],
+      "featured": true
+    },
+    {
+      "id": "defensive-cyber-critical-infra",
+      "title": "Defensive Cyber Operations in 2026: Securing Critical Infrastructure in the Horn of Africa",
+      "slug": "defensive-cyber-critical-infra",
+      "category": "Cybersecurity",
+      "summary": "A deep-dive into zero-trust access controls, ICS/SCADA security posture, and sovereign threat intelligence modeling for emerging digital economies.",
+      "content": "## The Modern Threat Landscape for Developing Nations\n\nAs financial transactions, energy grids, and government services rapidly digitize across Ethiopia, cybersecurity shifts from an IT afterthought to an essential pillar of national sovereignty.\n\n### Critical Focus Areas\n1. **SCADA and Energy Telemetry Protection:** Hardening substation protocols against unauthorized command injection.\n2. **FinTech Fraud Detection:** Behavioral anomaly modeling across mobile money ecosystems like Telebirr and CBE Birr.\n3. **Talent Pipeline Growth:** Why university CTF competitions and open-source security toolkits are vital to bridging Ethiopia's security specialist gap.",
+      "author": {
+        "name": "Kidus Solomon",
+        "role": "Security Research Fellow",
+        "institution": "EthioTech Cybersecurity Guild"
+      },
+      "readTimeMinutes": 8,
+      "publishedAt": "2026-01-25T16:00:00Z",
+      "tags": [
+        "Cybersecurity",
+        "Zero Trust",
+        "Threat Intelligence",
+        "FinTech Security"
+      ],
+      "featured": false
+    },
+    {
+      "id": "ethiopian-tech-startups-2026",
+      "title": "The State of Ethiopian Tech Startups 2026: Developer Density, Capital, and Policy Shifts",
+      "slug": "ethiopian-tech-startups-2026",
+      "category": "Ecosystem & News",
+      "summary": "An in-depth analysis of Ethiopia’s startup proclamation, capital growth, and the rising density of engineering graduates building global solutions.",
+      "content": "## A Historic Inflection Point\n\nEthiopia is experiencing unprecedented growth in software developer density. With nationwide investments in fiber infrastructure, the expansion of tech hubs in Addis Ababa, Hawassa, and Adama, and progressive reforms in startup regulations, the foundation for sustainable tech entrepreneurship is solidifying.\n\nKey trends observed:\n- Over 140,000 university students actively enrolled in STEM tracks nationwide.\n- Rapid emergence of local developer communities driving open-source tooling.\n- Deepening collaboration between university research labs and commercial enterprises.",
+      "author": {
+        "name": "ETHIOTECH INTEL Editorial Board",
+        "role": "Editorial & Research Committee",
+        "institution": "The EthioTech Initiative"
+      },
+      "readTimeMinutes": 4,
+      "publishedAt": "2026-03-10T10:00:00Z",
+      "tags": [
+        "Startups",
+        "Ecosystem",
+        "Policy",
+        "Tech Growth"
+      ],
+      "featured": false
+    }
+  ],
+  "events": [
+    {
+      "id": "ethio-ai-hackathon-2026",
+      "title": "EthioTech National AI Hackathon 2026",
+      "type": "Hackathon",
+      "date": "May 15–17, 2026",
+      "time": "09:00 AM EAT (48 Hours)",
+      "location": "Addis Ababa University, 4-Kilo Campus (ICT Hall) & Hybrid",
+      "description": "Join over 300 student engineers and researchers building innovative AI solutions for Ethiopian transit, agriculture, health diagnostics, and education. Mentorship by senior engineers and seed project grants for top finalists.",
+      "registrationOpen": true,
+      "capacity": 350,
+      "registeredCount": 218
+    },
+    {
+      "id": "robotics-embedded-bootcamp",
+      "title": "Hands-on Embedded Systems & ROS 2 Workshop",
+      "type": "Workshop",
+      "date": "April 26, 2026",
+      "time": "02:00 PM – 06:00 PM EAT",
+      "location": "Adama Science & Technology University (ASTU) MakerLab",
+      "description": "Intensive hardware workshop covering ESP32 microcontrollers, motor drive kinematics, sensor fusion, and ROS 2 middleware basics. Hardware kits provided for all attendees.",
+      "registrationOpen": true,
+      "capacity": 60,
+      "registeredCount": 54
+    },
+    {
+      "id": "intel-future-compute-symposium",
+      "title": "ETHIOTECH INTEL Symposium: The Future of Compute",
+      "type": "Symposium",
+      "date": "June 05, 2026",
+      "time": "10:00 AM – 04:30 PM EAT",
+      "location": "Science Museum Auditorium, Addis Ababa & YouTube Live",
+      "description": "Annual gathering of faculty, researchers, industry pioneers, and student innovators discussing foundational AI models, sovereign compute clusters, and tech entrepreneurship in the Horn of Africa.",
+      "registrationOpen": true,
+      "capacity": 500,
+      "registeredCount": 312
+    },
+    {
+      "id": "university-ctf-championship",
+      "title": "All-Ethiopia Inter-University CTF Tournament",
+      "type": "Tech Talk",
+      "date": "June 20, 2026",
+      "time": "01:00 PM – 08:00 PM EAT",
+      "location": "Virtual Platform (EthioTech Cyber Arena)",
+      "description": "Capture-the-flag cybersecurity competition testing cryptography, reverse engineering, web application security, and forensics across 24 university teams.",
+      "registrationOpen": true,
+      "capacity": 200,
+      "registeredCount": 145
+    }
+  ],
+  "applications": [
+    {
+      "fullName": "Kaleb Mengesha",
+      "email": "kaleb.m@aau.edu.et",
+      "institution": "Addis Ababa University",
+      "fieldOfStudy": "Computer Science / Engineering",
+      "graduationYear": "2027",
+      "track": "AI & Machine Learning",
+      "experienceLevel": "Intermediate",
+      "statement": "I want to contribute to Guzo AI graph algorithms.",
+      "id": "ET-2026-8191",
+      "status": "Pending Review",
+      "submittedAt": "2026-10-23T18:05:51.235Z"
+    },
+    {
+      "id": "ET-2026-9104",
+      "fullName": "Amanuel Girma",
+      "email": "amanuel.girma@example.edu.et",
+      "phone": "+251 91 123 4567",
+      "institution": "Addis Ababa University",
+      "fieldOfStudy": "Electrical & Computer Engineering",
+      "graduationYear": "2027",
+      "track": "AI & Machine Learning",
+      "experienceLevel": "Intermediate",
+      "githubUrl": "https://github.com/amanuel-girma",
+      "portfolioUrl": "https://amanuel.dev",
+      "statement": "I am deeply passionate about applying reinforcement learning to optimize public transit scheduling in Addis Ababa. I have built several computer vision projects in Python and PyTorch and want to collaborate with the Guzo AI team.",
+      "status": "Shortlisted",
+      "reviewerNotes": "Strong portfolio in PyTorch. Scheduled for technical interview with Eskinder.",
+      "submittedAt": "2026-03-14T11:20:00Z"
+    },
+    {
+      "id": "ET-2026-8841",
+      "fullName": "Selamawit Kebede",
+      "email": "selam.kebede@example.edu.et",
+      "phone": "+251 92 888 9911",
+      "institution": "Adama Science & Technology University",
+      "fieldOfStudy": "Software Engineering",
+      "graduationYear": "2026",
+      "track": "Full-Stack & Cloud Systems",
+      "experienceLevel": "Advanced",
+      "githubUrl": "https://github.com/selam-k",
+      "statement": "Active contributor to open-source developer tooling and distributed database engines. Want to lead backend microservices infrastructure for EthioTech initiatives.",
+      "status": "Accepted",
+      "reviewerNotes": "Accepted to Systems & Cloud Department. Assigned onboarding mentor.",
+      "submittedAt": "2026-03-08T09:45:00Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "MSG-001",
+      "name": "Dr. Tesfaye Desta",
+      "email": "tdesta@tech-faculty.aau.edu.et",
+      "subject": "University Lab Partnership with EthioTech",
+      "category": "University Chapter",
+      "message": "We are keen to establish an official EthioTech Initiative student research chapter within our department at AAU 4-Kilo campus. Let us schedule a coordination call.",
+      "receivedAt": "2026-03-15T15:00:00Z"
+    }
+  ],
+  "intros": [
+    {
+      "name": "Kirubel Fisseha",
+      "skills": "Three.js, WebGL, Rust",
+      "interests": "Robotics Simulations, Edge AI",
+      "contribution": "Building 3D digital twins for Addis Ababa traffic modeling",
+      "learningGoals": "WebAssembly acceleration for spatial compute",
+      "id": "intro-1792780322491",
+      "createdAt": "2026-10-23T18:32:02.491Z"
+    },
+    {
+      "id": "intro-001",
+      "name": "Amen Daod",
+      "skills": "Systems Architecture, Distributed Algorithms, Hardware",
+      "interests": "Autonomous Robotics, Open-Source Infrastructure, Ethiopian Tech",
+      "contribution": "Guiding student fellows and architecting community engineering roadmaps.",
+      "learningGoals": "Advancing multi-robot swarm communication in the Rift Valley.",
+      "createdAt": "2026-03-01T08:00:00Z"
+    },
+    {
+      "id": "intro-002",
+      "name": "Selamawit Tadesse",
+      "skills": "Python, PyTorch, React, Computer Vision",
+      "interests": "AgriTech Vision, Teff disease diagnosis, Deep Learning",
+      "contribution": "Contributing field dataset annotations and edge quantization tests.",
+      "learningGoals": "Optimizing INT8 quantized ONNX models for mobile browsers.",
+      "createdAt": "2026-03-10T12:00:00Z"
+    }
+  ]
+}

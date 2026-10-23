@@ -1,0 +1,6 @@
+{
+  "name": "The EthioTech Initiative",
+  "description": "The official platform for The EthioTech Initiative and ETHIOTECH INTEL — Empowering Ethiopia's next generation of tech innovators through education, research, collaborative engineering, and leadership.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
